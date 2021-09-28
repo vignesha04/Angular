@@ -1,0 +1,31 @@
+// 1. Install Sonar Dependency
+
+npm install --save-dev sonar-scanner
+
+// 2. Add sonar to build script
+
+"scripts": {
+  "sonar": "sonar-scanner"
+}
+
+// 3. Go to Karma.conf.js (Required in Angular 11+)
+
+reporters: [
+  // ..
+  { type: 'lcov' }, // Fies lcov not generating
+]
+
+// 4. Add sonar-project.properties
+
+sonar.host.url=http://localhost:9000
+sonar.login=admin
+sonar.password=123456
+sonar.projectKey=frontend-mono
+sonar.projectName=frontend-mono
+sonar.projectVersion=1.0
+sonar.sourceEncoding=UTF-8
+sonar.sources=src
+sonar.exclusions=**/node_modules/**
+sonar.tests=src
+sonar.test.inclusions=**/*.spec.ts
+sonar.typescript.lcov.reportPaths=coverage/frontend/lcov.info
